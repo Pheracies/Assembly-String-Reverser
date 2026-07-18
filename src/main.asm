@@ -2,7 +2,7 @@
 ;Essentially this is a string reversal program in x86-64 assembly language. 
 ;It prompts the user for a string, reverses it, and then prints the reversed string.
 extern printf           
-extern scanf            
+extern gets_s            
 extern exit
 extern strlen
 
@@ -95,9 +95,9 @@ main:
     call print_section
 
     ; B. Read the user input string into our BSS buffer
-    lea rcx, [rel format_string]    
-    lea rdx, [rel reversal_string]  
-    call scanf
+    lea rcx, [rel reversal_string]  ; Pass our buffer address as Arg 1
+    mov rdx, 100                    ; Pass the buffer size as Arg 2
+    call gets_s
 
     ; C. Call the string reversal logic
     lea rcx, [rel reversal_string]  ; Pass our buffer address as Arg 1
