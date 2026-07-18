@@ -42,7 +42,6 @@ reverse_string:
     mov rbp, rsp
     sub rsp, 48                 ; Shadow space + extra safety buffer for local vars
 
-    ; You were right! RCX already holds the string address, so call strlen directly.
     call strlen                 ; RAX now holds the length of the string
     
     cmp rax, 1                  ; If string length is 0 or 1, there's nothing to reverse
